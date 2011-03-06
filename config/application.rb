@@ -30,7 +30,7 @@ module GemTesters
     :sender_address => %{"Support" <support@gem-testers.org>},
     :exception_recipients => %w{erik@hollensbe.org bluepojo@gmail.com} if Rails.env == 'production'
     
-    config.middleware.use DomainRedirector if Rails.env == 'production'
+    #config.middleware.use DomainRedirector if Rails.env == 'production'
   end
 end
 
