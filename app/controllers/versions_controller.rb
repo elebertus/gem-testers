@@ -49,7 +49,7 @@ class VersionsController < ApplicationController
           redirect_to rubygem_path(@rubygem.name) and return
         else
           if @rubygem and @version
-            @paged_source = version_paged_path(@rubygem.name, @version.number)
+            @paged_source = rubygem_version_paged_path(@rubygem.name, @version.number)
             if @platform
               @paged_source += "?platform=#{@platform}"
               @test_results = TestResult.where(rubygem_id: @rubygem.id, version_id: @version.id, platform: @platform).all
