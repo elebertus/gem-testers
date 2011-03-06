@@ -2,6 +2,7 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 require 'exception_notifier'
+require File.dirname(__FILE__) + '/../lib/domain_redirector'
 
 # If you have a Gemfile, require the gems listed there, including any gems
 # you've limited to :test, :development, or :production.
@@ -25,9 +26,11 @@ module GemTesters
     end
     
     config.middleware.use ExceptionNotifier,
-      :email_prefix => "[Gem-Testers Exception] ",
-      :sender_address => %{"Support" <support@gem-testers.org>},
-      :exception_recipients => %w{erik@hollensbe.org bluepojo@gmail.com} if Rails.env == 'production'
+    :email_prefix => "[Gem-Testers Exception] ",
+    :sender_address => %{"Support" <support@gem-testers.org>},
+    :exception_recipients => %w{erik@hollensbe.org bluepojo@gmail.com} if Rails.env == 'production'
+    
+    config.middleware.use DomainRedirector if Rails.env == 'production'
   end
 end
 
