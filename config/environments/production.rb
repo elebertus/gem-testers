@@ -46,5 +46,16 @@ GemTesters::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
-  config.action_mailer.delivery_method = :sendmail
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = 
+    {
+      :address               => "smtp.gmail.com",
+      :port                  => 587,
+      :domain                => "gem-testers.org",
+      :user_name             => 'error-reports@gem-testers.org',
+      :password              => File.read('/data/gemtesters/shared/mail_password').strip,
+      :authentication        => 'plain',
+      :enable_starttls_auto  => true
+    }
 end

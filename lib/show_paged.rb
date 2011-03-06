@@ -18,7 +18,7 @@ module ShowPaged
 
     @count = q.count
     @filtered_count = filtered_q.count
-    @results = filtered_q.offset(params[:iDisplayStart]).limit(params[:iDisplayLength]).all
+    @results = filtered_q.offset(params[:iDisplayStart].to_i).limit(params[:iDisplayLength].to_i).all
     
     render json: {iTotalRecords: @count, iTotalDisplayRecords: @filtered_count, aaData: @results.collect(&:datatables_attributes)}
   end
