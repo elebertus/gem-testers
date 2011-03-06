@@ -54,7 +54,7 @@ GemTesters::Application.configure do
       :port                  => 587,
       :domain                => "gem-testers.org",
       :user_name             => 'error-reports@gem-testers.org',
-      :password              => File.read(File.join(Rails.root, 'config', 'mail_password')).strip,
+      :password              => File.read('/data/gemtesters/shared/mail_password').strip,
       :authentication        => 'plain',
       :enable_starttls_auto  => true
     }
