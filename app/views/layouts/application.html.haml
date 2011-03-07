@@ -22,7 +22,7 @@
       #topnav
         %a{:href => root_path} Gem Testers - tests run everywhere, collected here.
         #gem-search
-          %form{:onsubmit => "window.location = '/gems/' + $('#rubygems', this).val(); return false"}
+          %form{:onsubmit => "return false;"}
             #search-icon
               %img{:src => "/images/search.png"}
             %input#rubygems
