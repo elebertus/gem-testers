@@ -8,6 +8,11 @@ describe TestResult do
     @t = Factory.build :test_result, version: @v, rubygem: @g
   end
 
+  it "should allow creating without rubygems_test_version" do
+    @t.rubygems_test_version = nil
+    @t.save.should be_true
+  end
+
   it "should give attributes in datatables format" do
     @t.save!
     pass_fail = @t.result ? 'pass' : 'fail'

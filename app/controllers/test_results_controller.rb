@@ -99,6 +99,7 @@ class TestResultsController < ApplicationController
     attributes[:ruby_version]         = result_details[:ruby_version]
     attributes[:result]               = result_details[:result]
     attributes[:platform]             = result_details[:platform]
+    attributes[:rubygems_test_version] = result_details[:rubygems_test_version]
     attributes[:rubygem]              = @gem
     attributes[:version]              = @v
     
