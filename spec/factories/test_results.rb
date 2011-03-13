@@ -9,4 +9,5 @@ Factory.define :test_result do |t|
   t.vendor 'somevendor'
   t.ruby_version '3.0.0'
   t.platform 'someplatform'
+  t.rubygems_test_version '1.0.0'
 end

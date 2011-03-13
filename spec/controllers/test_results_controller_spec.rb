@@ -23,6 +23,39 @@ describe TestResultsController do
   end
 
 
+  describe 'POST create with rubygems_test_version' do
+    describe 'with valid results' do
+      before :all do
+        @results_yaml = <<-YAML
+--- 
+:arch: x86_64-linux
+:vendor: unknown
+:os: linux
+:machine_arch: x86_64
+:name: methlab
+:version: 
+  :prerelease: false
+  :release: 0.1.0
+:result: true
+:test_output: |
+  /home/josiah/.rvm/rubies/ruby-1.9.2-p0/bin/ruby -I"lib:lib" "/home/josiah/.rvm/rubies/ruby-1.9.2-p0/lib/ruby/1.9.1/rake/rake_test_loader.rb" "test/test_checks.rb" "test/test_integrate.rb" "test/test_inline.rb" "test/test_defaults.rb" 
+  Loaded suite /home/josiah/.rvm/rubies/ruby-1.9.2-p0/lib/ruby/1.9.1/rake/rake_test_loader
+  Started
+  ............
+:rubygems_test_version: 1.0.0
+
+YAML
+      end
+
+      it 'should create the test_result' do
+        post :create, 'results' => @results_yaml
+        t = TestResult.last
+        t.rubygems_test_version.should == '1.0.0'
+      end
+      
+    end
+  end
+  
   describe 'POST create' do
     describe 'with valid results' do
       before :all do

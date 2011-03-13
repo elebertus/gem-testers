@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110108030608) do
+ActiveRecord::Schema.define(:version => 20110313153714) do
 
   create_table "rubygems", :force => true do |t|
     t.string   "name",       :null => false
@@ -21,18 +21,19 @@ ActiveRecord::Schema.define(:version => 20110108030608) do
   add_index "rubygems", ["name"], :name => "index_rubygems_on_name", :unique => true
 
   create_table "test_results", :force => true do |t|
-    t.boolean  "result",               :null => false
+    t.boolean  "result",                :null => false
     t.text     "test_output"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "version_id",           :null => false
-    t.integer  "rubygem_id",           :null => false
+    t.integer  "version_id",            :null => false
+    t.integer  "rubygem_id",            :null => false
     t.string   "operating_system"
     t.string   "architecture"
     t.string   "machine_architecture"
     t.string   "vendor"
     t.string   "ruby_version"
     t.string   "platform"
+    t.string   "rubygems_test_version"
   end
 
   create_table "versions", :force => true do |t|
