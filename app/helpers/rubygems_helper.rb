@@ -26,9 +26,9 @@ module RubygemsHelper
     #
     # FIXME Turn this into a straight query that groups or distinct's version. Doing it this way is slow.
     # 
-    versions = rubygem.versions.collect do |v| 
+    versions = rubygem.versions.sort.collect do |v| 
       [v.number, rubygem_version_path(rubygem.name, v.number, :platform => platform)]
-    end.sort_by { |x| Gem::Version.new(x[0]) } 
+    end
 
     versions.reverse!.unshift(['All versions', rubygem_path(rubygem.name)])
     versions
