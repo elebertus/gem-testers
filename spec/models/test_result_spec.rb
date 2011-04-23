@@ -20,7 +20,7 @@ describe TestResult do
                                         "<div class=\"datatable-cell\">#{@v.number}</div>",
                                         "<div class=\"datatable-cell\">#{@t.platform}</div>",
                                         "<div class=\"datatable-cell\">#{@t.ruby_version}</div>",
-                                        "<div class=\"datatable-cell\">#{@t.operating_system}</div>",
+                                        "<div class=\"datatable-cell\">#{OSTranslator.translate(@t.operating_system)}</div>",
                                         "<div class=\"datatable-cell\">#{@t.architecture}</div>",
                                         "<div class=\"datatable-cell\">#{@t.vendor}</div>"]
   end
