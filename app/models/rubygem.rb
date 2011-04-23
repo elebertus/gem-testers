@@ -10,7 +10,8 @@ class Rubygem < ActiveRecord::Base
 
   has_many :test_results
   has_many :versions
-
+  has_many :authors, through: :ownerships, class_name: 'User'
+  
   def pass_count
     TestResult.where(result: true, rubygem_id: self.id).count
   end
