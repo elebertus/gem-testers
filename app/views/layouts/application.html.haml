@@ -20,12 +20,13 @@
   %body
     #wrapper
       #topnav
-        %a{:href => root_path} Gem Testers - tests run everywhere, collected here.
+        %a.logo{:href => root_path, :title => 'Gem Testers - tests run everywhere, collected here.'}
         #gem-search
           %form{:onsubmit => "return false;"}
             #search-icon
               %img{:src => "/images/search.png"}
             %input#rubygems
+          %a.find_gem{:href => '/browse'} Browse For Gems
         %div.clear
 
       #content

@@ -1,0 +1,14 @@
+#browse
+  = render :partial => "selector"
+  .list
+    - @gems.each do |gem|
+      %div
+        %span= link_to(gem.name, rubygem_path(gem.name))
+        %span{:style => "float: right"}
+          (
+          =gem.test_results.count 
+          test results in
+          =gem.versions.count
+          versions
+          )
+  = render :partial => "selector"

@@ -1,4 +1,5 @@
 class Rubygem < ActiveRecord::Base
+  paginates_per 50
 
   # routes can't include ^/$ in a constraint
   ROUTE_MATCHER = /[A-Za-z0-9\-\_\.]+/

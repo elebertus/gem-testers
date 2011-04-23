@@ -32,13 +32,27 @@ span.meta
   padding: 20px 20px
 
   a
+    color: #CCC 
+    font-size: 18px 
+    text-decoration: none
+
+  a.find_gem
+    float: right
+    padding: 10px
+    border-radius: 0px 0px 5px 5px
+    -moz-border-radius: 0px 0px 5px 5px
+    background: url("/images/search-bg.png") repeat-x
+    background: -moz-linear-gradient(270deg, #2a0303, #531010)
+    background: -webkit-gradient(linear, 0% 100%, 0% 0%, from(#2a0303), to(#531010))
+
+  a.logo
+    background: url("/images/logo.png") no-repeat
     display: block
     float: left
     text-indent: -9999px
     width: 215px
     height: 50px
-    background: url("/images/logo.png") no-repeat
-  
+
   div.tagline
     display: block
     float: left
@@ -65,7 +79,7 @@ span.meta
       border: none
       border-top: 1px solid #240404
       border-bottom: 1px solid #822c2c
-      border-radius: 0.5em
+      border-radius: 0.5em 0.5em 0 0.5em
       -moz-border-radius: 0.5em
       font-size: 22px
       color: #FFFFFF
@@ -91,3 +105,24 @@ span.meta
     padding: 0 5px
     text-align: center
     background: #CBC2AE
+
+#browse
+  background: #CBC2AE
+  padding: 15px
+  font-size: 1.7em
+  line-height: 150%
+  border-radius: 10px
+  color: #444
+
+  .nav
+    background: #BAB19D
+    padding: 10px
+    font-size: 1em
+    border-radius: 7px
+    color: #888 
+    a
+      color: black
+  .list
+    padding: 1em
+  a
+    text-decoration: none
