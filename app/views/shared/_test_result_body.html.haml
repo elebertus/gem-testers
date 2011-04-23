@@ -3,6 +3,6 @@
   %td= result.version.number
   %td= result.platform
   %td= result.ruby_version
-  %td= result.operating_system
+  %td= OSTranslator.translate(result.operating_system)
   %td= result.machine_architecture
   %td= result.vendor

@@ -39,7 +39,6 @@ class TestResult < ActiveRecord::Base
   
   belongs_to :rubygem
   belongs_to :version
-
   
   def short_attributes options={with_associations: true}
     attrs = self.attributes.clone
@@ -59,7 +58,7 @@ class TestResult < ActiveRecord::Base
                           '<div class="datatable-cell grade fail">FAIL</div>'
                         end
     humanized_result += "</a>"
-    [humanized_result].concat [self.version.number, self.platform, self.ruby_version, self.operating_system, self.architecture, self.vendor].collect {|x| "<div class=\"datatable-cell\">#{x}</div>"}
+    [humanized_result].concat [self.version.number, self.platform, self.ruby_version, OSTranslator.translate(self.operating_system), self.architecture, self.vendor].collect {|x| "<div class=\"datatable-cell\">#{x}</div>"}
   end
 
 end
