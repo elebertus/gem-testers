@@ -24,10 +24,10 @@ class ApplicationController < ActionController::Base
   def populate_os_matrix test_results
     os_matrix = {}
     test_results.each do |result|
-      inner_array = (os_matrix[result.ruby_version] ||= {})[OSTranslator.translate(result.operating_system)] ||= {}
-      inner_array[:pass] ||= 0 
-      inner_array[:fail] ||= 0 
-      inner_array[result.result ? :pass : :fail] += 1
+      inner_hash = (os_matrix[result.ruby_version] ||= {})[OSTranslator.translate(result.operating_system)] ||= {}
+      inner_hash[:pass] ||= 0 
+      inner_hash[:fail] ||= 0 
+      inner_hash[result.result ? :pass : :fail] += 1
     end
     os_matrix
   end
