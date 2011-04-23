@@ -77,4 +77,11 @@ describe Version do
     2.times { Factory.create :test_result, version: v, rubygem: @gem, result: false }
     v.fail_count.should == 2
   end
+
+  it 'should sort properly with prerelease versions' do
+    versions = []
+    versions << Factory.create(:version, rubygem: @gem, number: '1.0')
+    versions << Factory.create(:version, rubygem: @gem, number: '1.0rc', prerelease: true)
+    versions.sort.first.number.should == '1.0rc'
+  end
 end

@@ -19,4 +19,12 @@ class Version < ActiveRecord::Base
   def fail_count
     TestResult.where(result: false, version_id: self.id).count
   end
+
+  def gem_version
+    @gem_version = Gem::Version.new(self.number)
+  end
+  
+  def <=> other
+    self.gem_version <=> other.gem_version
+  end
 end
