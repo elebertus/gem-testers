@@ -13,6 +13,8 @@ GemTesters::Application.routes.draw do
     end
   end
 
+  get '/browse' => 'browse#index'
+
   post '/test_results' => 'test_results#create'
   get '/test_results.:format' => 'test_results#index', as: 'test_results'
 end
