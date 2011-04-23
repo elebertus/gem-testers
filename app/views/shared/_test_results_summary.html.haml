@@ -9,7 +9,7 @@
         - @ruby_versions.each do |ruby|
           %th= ruby || "not reported"
 
-      - @operating_systems.each do |os|
+      - @operating_systems.sort.each do |os|
         %tr
           %td.os=os
           - @ruby_versions.each do |ruby|
