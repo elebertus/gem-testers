@@ -25,5 +25,5 @@ $(document).ready(function(){
     }
   });
   
-  $( "#rubygems").focus();
+  //$( "#rubygems").focus();
 });
