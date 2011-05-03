@@ -1,3 +1,6 @@
 class Authorship < ActiveRecord::Base
-  validates_presence_of :user_id, :rubygem_id
+  belongs_to :rubygem
+  belongs_to :author, class_name: 'User'
+  
+  validates_presence_of :author_id, :rubygem_id
 end

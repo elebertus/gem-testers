@@ -11,6 +11,7 @@ gem 'kaminari'
 
 group :development, :test do
   gem "rails3-generators"
+  gem 'webmock'
   gem 'cucumber-rails'
   gem 'factory_girl_rails'
   gem 'rspec-rails'

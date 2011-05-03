@@ -43,4 +43,13 @@ describe Rubygem do
     
     g.fail_count.should == 2
   end
+
+  it 'should return the latest version' do
+    g = Factory.create :rubygem
+    v3 = Factory.create :version, number: '2.0.0'
+    v = Factory.create :version, number: '1.0.0'
+    v2 = Factory.create :version, number: '1.0.0rc'
+
+    g.latest_version.number.should == '2.0.0'
+  end
 end

@@ -84,4 +84,26 @@ describe Version do
     versions << Factory.create(:version, rubygem: @gem, number: '1.0rc', prerelease: true)
     versions.sort.first.number.should == '1.0rc'
   end
+
+  describe 'should look up the gem owner on create of the latest version' do
+    it 'when it is the latest version' do
+      v = Factory.build(:version, rubygem: @gem)
+      GemCutter.should_receive(:gem_data).with(@gem.name).and_return({"name" => @gem.name, "authors" => "Erik Hollensbe, Josiah Kiehl"})
+      v.save
+      Authorship.where(rubygem_id: @gem.id).map do |authorship|
+        authorship.rubygem_id.should == @gem.id
+        ["Erik Hollensbe", "Josiah Kiehl"].include?(User.where(id: authorship.author_id).first.name ).should be_true
+      end
+    end
+
+    it 'not when it is not the latest version' do
+      GemCutter.should_receive(:gem_data).with(@gem.name).and_return({"name" => @gem.name, "authors" => "Erik Hollensbe, Josiah Kiehl"})
+      v1 = Factory.create(:version, rubygem: @gem, number: '1.0.0')
+      GemCutter.should_not_receive(:gem_data)
+      v2 = Factory.build(:version, rubygem: @gem, number: '1.0.0rc', prerelease: true)
+      v3 = Factory.build(:version, rubygem: @gem, number: '0.2.0')
+      v2.save
+      v3.save
+    end
+  end
 end

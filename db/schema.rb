@@ -10,10 +10,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110423221836) do
+ActiveRecord::Schema.define(:version => 20110502204403) do
 
   create_table "authorships", :force => true do |t|
-    t.integer  "user_id",    :null => false
+    t.integer  "author_id",  :null => false
     t.integer  "rubygem_id", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(:version => 20110423221836) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "handle",     :null => false
+    t.string   "name",       :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

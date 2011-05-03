@@ -41,7 +41,7 @@ CREATE TABLE `test_results` (
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `handle` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -89,3 +89,5 @@ INSERT INTO schema_migrations (version) VALUES ('20110313153714');
 INSERT INTO schema_migrations (version) VALUES ('20110423221729');
 
 INSERT INTO schema_migrations (version) VALUES ('20110423221836');
+
+INSERT INTO schema_migrations (version) VALUES ('20110502200537');

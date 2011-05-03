@@ -36,3 +36,4 @@ end
 
 
 require "#{Rails.root}/lib/response"
+require "#{Rails.root}/lib/gem_cutter"
