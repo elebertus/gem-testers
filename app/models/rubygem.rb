@@ -28,7 +28,7 @@ class Rubygem < ActiveRecord::Base
       Author.find_by_name(author.strip) || Author.new(name: author.strip)
     end
       
-    self.authors = authors
+    self.authors = authors.uniq { |x| x.name }
     save
   end
 
