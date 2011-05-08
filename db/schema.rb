@@ -10,7 +10,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110313153714) do
+ActiveRecord::Schema.define(:version => 20110423221836) do
+
+  create_table "authors", :force => true do |t|
+    t.string   "name",       :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "authorships", :force => true do |t|
+    t.integer  "author_id",  :null => false
+    t.integer  "rubygem_id", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "rubygems", :force => true do |t|
     t.string   "name",       :null => false

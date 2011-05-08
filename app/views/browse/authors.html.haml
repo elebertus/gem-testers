@@ -1,0 +1,18 @@
+#browse
+  .nav
+    = render :partial => "authors_selector"
+  .list
+    - @authors.each do |author|
+      %div
+        %span=link_to author.name, gems_author_path(author)
+        %span{:style => "float: right"}
+          (
+          =author.rubygems.joins(:test_results).count
+          test results in
+          =author.rubygems.joins(:versions).count
+          versions in
+          =author.rubygems.count
+          gems
+          )
+  .nav
+    = render :partial => "authors_selector"

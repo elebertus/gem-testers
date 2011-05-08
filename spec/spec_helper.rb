@@ -25,3 +25,13 @@ RSpec.configure do |config|
   # instead of true.
   config.use_transactional_fixtures = true
 end
+
+require 'webmock/rspec'
+
+
+
+module GemCutter
+  def self.gem_data name
+    {"name" => name, "authors" => "Erik Hollensbe, Josiah Kiehl"}
+  end
+end

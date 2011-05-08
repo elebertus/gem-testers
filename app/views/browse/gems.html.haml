@@ -1,5 +1,5 @@
 #browse
-  = render :partial => "selector"
+  = render :partial => "browse/gems_selector"
   .list
     - @gems.each do |gem|
       %div
@@ -11,4 +11,4 @@
           =gem.versions.count
           versions
           )
-  = render :partial => "selector"
+  = render :partial => "browse/gems_selector"

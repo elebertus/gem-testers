@@ -5,4 +5,4 @@
       %select{:onchange => "this.form.submit();", :name => "order_by"}
         =options_for_select([["Gem Name", "name"], ["# of Versions", "versions"], ["# of Test Results", "test_results"]], :selected => params[:order_by])
       %input{:type => "hidden", :name => "page", :value => 0}
-  %span{:style => "float: right"}=paginate @gems
+  = render :partial => "browse/kaminari_selector", :locals => { :items => @gems }

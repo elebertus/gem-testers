@@ -26,9 +26,9 @@ module GemTesters
     end
     
     config.middleware.use ExceptionNotifier,
-    :email_prefix => "[Gem-Testers Exception] ",
-    :sender_address => %{"Support" <support@gem-testers.org>},
-    :exception_recipients => %w{erik@hollensbe.org bluepojo@gmail.com} if Rails.env == 'production'
+      :email_prefix => "[Gem-Testers Exception] ",
+      :sender_address => %{"Support" <support@gem-testers.org>},
+      :exception_recipients => %w{erik@hollensbe.org bluepojo@gmail.com} if Rails.env == 'production'
     
     config.middleware.use DomainRedirector if Rails.env == 'production'
   end
@@ -36,3 +36,4 @@ end
 
 
 require "#{Rails.root}/lib/response"
+require "#{Rails.root}/lib/gem_cutter"
