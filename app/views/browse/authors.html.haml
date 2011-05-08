@@ -10,10 +10,9 @@
         %span=link_to author.name, gems_author_path(author)
         %span{:style => "float: right"}
           (
-          -# FIXME erik, this sucks. please fix it. -erik
-          =author.rubygems.map(&:test_results).flatten.count 
+          =author.rubygems.joins(:test_results).count
           test results in
-          =author.rubygems.map(&:versions).flatten.count
+          =author.rubygems.joins(:versions).count
           versions in
           =author.rubygems.count
           gems
