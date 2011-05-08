@@ -1,6 +1,9 @@
 class BrowseController < ApplicationController
   def index
+    redirect_to :browse_gems
+  end
 
+  def gems
     order_by = :name
 
     if params[:order_by] and [:name, :versions, :test_results].include?(params[:order_by].to_sym)
@@ -17,5 +20,8 @@ class BrowseController < ApplicationController
     else
       @gems = Rubygem.order(order_by).page(params[:page] || 0)
     end
+  end
+
+  def authors
   end
 end
