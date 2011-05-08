@@ -1,0 +1,23 @@
+#browse
+  .nav
+    &nbsp;
+    %span{:style => "float: left"} &nbsp;
+    = render :partial => "kaminari_selector", :locals => { :items => @authors }
+  .list
+    - @authors.each do |author|
+      %div
+        %span=link_to author.name, gems_author_path(author)
+        %span{:style => "float: right"}
+          (
+          -# erik, this sucks. please fix it. -erik
+          =author.rubygems.map(&:test_results).flatten.count 
+          test results in
+          =author.rubygems.map(&:versions).flatten.count
+          versions in
+          =author.rubygems.count
+          gems
+          )
+  .nav
+    &nbsp;
+    %span{:style => "float: left"} &nbsp;
+    = render :partial => "kaminari_selector", :locals => { :items => @authors }

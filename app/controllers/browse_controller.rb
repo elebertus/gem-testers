@@ -23,5 +23,6 @@ class BrowseController < ApplicationController
   end
 
   def authors
+    @authors = Author.page(params[:page] || 0, :include => [:rubygems => [ :versions, :test_results ] ])
   end
 end

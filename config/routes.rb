@@ -13,6 +13,10 @@ GemTesters::Application.routes.draw do
     end
   end
 
+  resource :author, controller: :authors do
+    get ':id/gems' => 'authors#gems', as: 'gems'
+  end
+
   get '/browse'         => 'browse#index',    as: 'browse_index',   format: [:html]
   get '/browse/gems'    => 'browse#gems',     as: 'browse_gems',    format: [:html]
   get '/browse/authors' => 'browse#authors',  as: 'browse_authors', format: [:html]
