@@ -14,6 +14,7 @@
   .nav
     = version_select(@rubygem, @version, @platform)
     = platform_select(@all_test_results, @rubygem, @platform, @version)
+  -# FIXME fix these styles erik
   %div{:style => "float: right; line-height: 150%"}
     %h3 Authors:
     - @rubygem.authors.each do |author|
