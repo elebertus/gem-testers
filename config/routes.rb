@@ -13,9 +13,9 @@ GemTesters::Application.routes.draw do
     end
   end
 
-  get '/browse' => 'browse#index', as: 'browse_index', format: [:html]
-  get '/browse/gems' => 'browse#gems', as: 'browse_gems', format: [:html]
-  get '/browse/authors' => 'browse#authors', as: 'browse_authors', format: [:html]
+  get '/browse'         => 'browse#index',    as: 'browse_index',   format: [:html]
+  get '/browse/gems'    => 'browse#gems',     as: 'browse_gems',    format: [:html]
+  get '/browse/authors' => 'browse#authors',  as: 'browse_authors', format: [:html]
 
   post '/test_results' => 'test_results#create'
   get '/test_results.:format' => 'test_results#index', as: 'test_results'
