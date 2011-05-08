@@ -5,4 +5,9 @@
       %select{:onchange => "this.form.submit();", :name => "order_by"}
         =options_for_select([["Gem Name", "name"], ["# of Versions", "versions"], ["# of Test Results", "test_results"]], :selected => params[:order_by])
       %input{:type => "hidden", :name => "page", :value => 0}
-  = render :partial => "browse/kaminari_selector", :locals => { :items => @gems }
+  - if @author
+    -# FIXME fix these styles erik
+    %span{:style => "float: right; color: #444"}
+      Gems by Author: 
+      = @author.name
+  = render :partial => "browse/kaminari_selector", :locals => { :items => @gems } 
