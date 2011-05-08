@@ -1,9 +1,6 @@
 #browse
   .nav
-    -# FIXME styles
-    &nbsp;
-    %span{:style => "float: left"} &nbsp;
-    = render :partial => "kaminari_selector", :locals => { :items => @authors }
+    = render :partial => "authors_selector"
   .list
     - @authors.each do |author|
       %div
@@ -18,7 +15,4 @@
           gems
           )
   .nav
-    -# FIXME styles
-    &nbsp;
-    %span{:style => "float: left"} &nbsp;
-    = render :partial => "kaminari_selector", :locals => { :items => @authors }
+    = render :partial => "authors_selector"

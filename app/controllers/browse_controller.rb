@@ -8,6 +8,6 @@ class BrowseController < ApplicationController
   end
 
   def authors
-    @authors = Author.page(params[:page] || 0, :include => :rubygems)
+    @authors = sort_authors(Author)
   end
 end
