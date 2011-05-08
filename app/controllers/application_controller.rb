@@ -31,4 +31,24 @@ class ApplicationController < ActionController::Base
     end
     os_matrix
   end
+  
+  def sort_gems(gems)
+    order_by = :name
+
+    if params[:order_by] and [:name, :versions, :test_results].include?(params[:order_by].to_sym)
+      order_by = params[:order_by].to_sym
+    end
+
+    if order_by != :name
+      join = gems.joins(order_by)
+      group = join.group("#{order_by}.rubygem_id")
+      order = group.select("rubygems.id, count(#{order_by}.rubygem_id) as order_by_count")
+      page = order.order("order_by_count DESC")
+      paged_gems = page.page(params[:page] || 0, :include => [:versions, :test_results])
+      paged_gems.each(&:reload)
+      return paged_gems
+    else
+      return gems.order(order_by).page(params[:page] || 0, :include => [:versions, :test_results])
+    end
+  end
 end

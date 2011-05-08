@@ -1,6 +1,6 @@
 class AuthorsController < ApplicationController
   def gems
-    @gems = Author.where(:id => params[:id]).first.rubygems.page(params[:page] || 0)
+    @gems = sort_gems(Author.where(:id => params[:id]).first.rubygems)
     render 'browse/gems'
   end
 end
