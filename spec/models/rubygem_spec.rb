@@ -46,9 +46,11 @@ describe Rubygem do
 
   it 'should return the latest version' do
     g = Factory.create :rubygem
-    v3 = Factory.create :version, number: '2.0.0'
-    v = Factory.create :version, number: '1.0.0'
-    v2 = Factory.create :version, number: '1.0.0rc'
+    v3 = Factory.create :version, number: '2.0.0', rubygem: g
+    v = Factory.create :version, number: '1.0.0', rubygem: g
+    v2 = Factory.create :version, number: '1.0.0rc', rubygem: g
+
+    g.reload
 
     g.latest_version.number.should == '2.0.0'
   end

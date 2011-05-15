@@ -92,7 +92,7 @@ describe Version do
       v.save
       Authorship.where(rubygem_id: @gem.id).map do |authorship|
         authorship.rubygem_id.should == @gem.id
-        ["Erik Hollensbe", "Josiah Kiehl"].include?(User.where(id: authorship.author_id).first.name ).should be_true
+        ["Erik Hollensbe", "Josiah Kiehl"].include?(Author.where(id: authorship.author_id).first.name ).should be_true
       end
     end
 
