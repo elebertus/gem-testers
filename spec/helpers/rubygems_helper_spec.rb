@@ -15,4 +15,19 @@ describe RubygemsHelper do
       versions[i].first.should == number
     end
   end
+
+  it 'should select the current platform properly' do
+    g = Factory.create :rubygem
+    pv = Factory.create :version, rubygem: g, number: '2.0'
+    Factory.create :test_result, version: pv, platform: 'java'
+    Factory.create :version, rubygem: g, number: '2.0rc', prerelease: true
+    Factory.create :version, rubygem: g, number: '1.0'
+    Factory.create :version, rubygem: g, number: '1.0rc', prerelease: true
+    v = Factory.create :version, rubygem: g, number: '3.0'
+    Factory.create :version, rubygem: g, number: '3.0rc', prerelease: true
+    g.reload
+
+    current_platform(nil, g, v).should == rubygem_version_path(g.name, '3.0')
+    current_platform('java', g, pv).should == rubygem_version_path(g.name, '2.0', :platform => 'java')
+  end
 end
