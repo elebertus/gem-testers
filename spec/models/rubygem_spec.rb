@@ -54,4 +54,19 @@ describe Rubygem do
 
     g.latest_version.number.should == '2.0.0'
   end
+
+  it "should report all authors on a rubygem" do
+    g = Factory.create :rubygem
+    a = Factory.create :author
+    at = Factory.create :authorship, rubygem: g, author: a
+
+    g.reload
+
+    g.authors.should_not be_empty
+    g.authors.first.name.should == 'username'
+  end
+
+  it "should respond to kaminari" do
+    Rubygem.should respond_to(:page)
+  end
 end
