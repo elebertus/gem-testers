@@ -29,5 +29,7 @@ describe RubygemsHelper do
 
     current_platform(nil, g, v).should == rubygem_version_path(g.name, '3.0')
     current_platform('java', g, pv).should == rubygem_version_path(g.name, '2.0', :platform => 'java')
+    current_platform(nil, g, nil).should == rubygem_path(g.name)
+    current_platform('java', g, nil).should == rubygem_path(g.name, :platform => 'java')
   end
 end
