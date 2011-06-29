@@ -8,6 +8,7 @@ gem 'haml'
 gem 'exception_notification', :git => 'git://github.com/erikh/exception_notification.git'
 gem 'tinyatom'
 gem 'kaminari'
+gem 'unicorn'
 
 group :development, :test do
   gem "rails3-generators"
