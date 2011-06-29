@@ -1,8 +1,8 @@
 source 'http://rubygems.org'
 
-gem 'rack', '= 1.2.1'
-gem 'rails', '= 3.0.7'
-gem 'mysql2'
+gem 'rack'
+gem 'rails', '~> 3.0.7'
+gem 'mysql2', '~> 0.2.0'
 gem 'capistrano'
 gem 'haml'
 gem 'exception_notification', :git => 'git://github.com/erikh/exception_notification.git'
