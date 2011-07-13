@@ -9,11 +9,10 @@
   = render :partial => "shared/rubygem", :locals => {:rubygem => @result.rubygem, :version => @result.version}
   = link_to(@result.version.number, rubygem_version_path(@result.rubygem.name, @result.version.number), :class => 'version')
   %a.version{:href => "http://rubygems.org/gems/#{@result.rubygem.name}"} [rubygems.org]
-  -# FIXME fix these styles erik
-  %div{:style => "float: right; line-height: 150%"}
+  .author
     %h3 Authors:
     - @result.rubygem.authors.each do |author|
-      %h3{:style => "display: block"}=link_to author.name, gems_author_path(author), :title => "See other gems by #{author.name}"
+      %li=link_to author.name, gems_author_path(author), :title => "See other gems by #{author.name}"
   .clear
   
   %table.gem-info
@@ -29,7 +28,7 @@
       = clippy(@result.test_output)
     .clear
 
-  #textbox{:style => "display: none"}
+  .textbox
     %textarea
       = filter_ansi @result.test_output
   #output
